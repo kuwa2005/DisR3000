@@ -11,23 +11,22 @@ This document explains the minimum steps to build `DisR3000` with Microsoft Visu
 
 ```powershell
 cd C:\00_Project\DisR3000
-cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /nologo /LD /O2 /W4 /I.\src src\DisR3000.c src\DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
+mkdir dist\x64 -Force
+cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /nologo /O2 /W4 /I.\src /c src\DisR3000.c src\DisR3000Main.c /Fo.\dist\x64\ && link /DLL /OUT:dist\x64\DisR3000.dll /IMPLIB:dist\x64\DisR3000.lib dist\x64\DisR3000.obj dist\x64\DisR3000Main.obj kernel32.lib'
 ```
 
 ## x86 Build
 
 ```powershell
 cd C:\00_Project\DisR3000
-cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /LD /O2 /W4 /I.\src src\DisR3000.c src\DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
+mkdir dist\x86 -Force
+cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /O2 /W4 /I.\src /c src\DisR3000.c src\DisR3000Main.c /Fo.\dist\x86\ && link /DLL /OUT:dist\x86\DisR3000.dll /IMPLIB:dist\x86\DisR3000.lib dist\x86\DisR3000.obj dist\x86\DisR3000Main.obj kernel32.lib'
 ```
 
 ## Build Artifacts
 
-- `DisR3000.dll`
-- `DisR3000.lib`
-- `DisR3000.exp`
-- `DisR3000.obj`
-- `DisR3000Main.obj`
+- `dist\x64\DisR3000.dll`, `dist\x64\DisR3000.lib`, `dist\x64\DisR3000.exp`, `dist\x64\*.obj`
+- `dist\x86\DisR3000.dll`, `dist\x86\DisR3000.lib`, `dist\x86\DisR3000.exp`, `dist\x86\*.obj`
 
 ## Notes
 
