@@ -9,6 +9,7 @@ DisR3000 is a Windows DLL tool for disassembling R3000 machine code.
 - `tests/`: local validation tools
 - `API_SPEC.md`: API specification
 - `BUILD_MSVC.md`: MSVC build guide
+- `LICENSE`: MIT license text
 
 ## Build (MSVC x64)
 
@@ -34,3 +35,8 @@ make
 ## Sample
 
 - `sample/use_disr3000.c`
+
+## License
+
+This project is licensed under the MIT License.
+See `LICENSE` for details.
