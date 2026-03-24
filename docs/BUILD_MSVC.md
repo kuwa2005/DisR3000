@@ -11,14 +11,14 @@ This document explains the minimum steps to build `DisR3000` with Microsoft Visu
 
 ```powershell
 cd C:\00_Project\DisR3000
-cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /nologo /LD /O2 /W4 /I. DisR3000.c DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
+cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /nologo /LD /O2 /W4 /I.\src src\DisR3000.c src\DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
 ```
 
 ## x86 Build
 
 ```powershell
 cd C:\00_Project\DisR3000
-cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /LD /O2 /W4 /I. DisR3000.c DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
+cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /LD /O2 /W4 /I.\src src\DisR3000.c src\DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
 ```
 
 ## Build Artifacts
