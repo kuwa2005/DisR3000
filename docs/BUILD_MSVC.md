@@ -1,34 +1,27 @@
-# DisR3000
+# MSVC Build Guide
 
-DisR3000 is a Windows DLL project for R3000 disassembly workflows.
+This document explains the minimum steps to build `DisR3000` with Microsoft Visual C++.
 
-## Exported API
+## Prerequisites
 
-- `DisR3000_Init()`
-- `DisR3000_Open()`
-- `DisR3000_Sample(...)`
-- `DisR3000_Exec()`
-- `DisR3000_Close()`
-- `DisR3000_End()`
-- `DisR3000_GetError(...)`
+- Visual Studio Community 2026 (or compatible)
+- C++ workload: Desktop development with C++
 
-Public header: `DISR3000.H`
-
-## Build (MSVC x64)
+## x64 Build
 
 ```powershell
 cd C:\00_Project\DisR3000
 cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /nologo /LD /O2 /W4 /I. DisR3000.c DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
 ```
 
-## Build (MSVC x86)
+## x86 Build
 
 ```powershell
 cd C:\00_Project\DisR3000
 cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /LD /O2 /W4 /I. DisR3000.c DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
 ```
 
-## Artifacts
+## Build Artifacts
 
 - `DisR3000.dll`
 - `DisR3000.lib`
@@ -38,6 +31,5 @@ cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Buil
 
 ## Notes
 
-- The existing `Makefile` targets GCC/MinGW style flags.
-- For MSVC based workflow, use the `cl` commands above.
-- See `docs/BUILD_MSVC.md` for a focused guide.
+- Current sources can emit warnings, but DLL generation succeeds.
+- To reduce warnings, fix pointer type mismatches and replace unsafe CRT calls.
