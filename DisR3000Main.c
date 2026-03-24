@@ -152,15 +152,15 @@ static STR_R3000ASM R3000Asm[] = {
 	{ 0xFFFFFFFF,0x0000000C,"SYSCALL",{                     NULL}},//                ________________________________ 
 	{ 0xFFFFFFFF,0x00000000,"NOP"	 ,{                     NULL}},//                ________________________________ 
 	{ 0xFC00003F,0x0000000D,"BREAK"	 ,{I06_20,				NULL}},//	c           ______cccccccccccccccccccc______ 
-	{ 0xFFE0003F,0x00000000,"SLL"	 ,{R16_05,R11_05,R21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
-	{ 0xFFE0003F,0x00000003,"SRA"	 ,{R16_05,R11_05,R21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
-	{ 0xFFE0003F,0x00000002,"SRL"	 ,{R16_05,R11_05,R21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
+	{ 0xFFE0003F,0x00000000,"SLL"	 ,{R16_05,R11_05,S21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
+	{ 0xFFE0003F,0x00000003,"SRA"	 ,{R16_05,R11_05,S21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
+	{ 0xFFE0003F,0x00000002,"SRL"	 ,{R16_05,R11_05,S21_05,NULL}},//	d,t,s       ___________tttttdddddsssss______ 
 	{ 0xFFE007FF,0x00000021,"MOVE"	 ,{R11_05,R16_05,       NULL}},//	t,d         ___________tttttddddd___________ 
 	{ 0xFC1F07FF,0x00000009,"JALR"	 ,{R16_05,R06_05,       NULL}},//	d,s         ______sssss_____ddddd___________ 
 	{ 0xFC1FFFFF,0x00000008,"JR"	 ,{R06_05,              NULL}},//	s           ______sssss_____________________ 
 	{ 0xFFFF07FF,0x00000010,"MFHI"	 ,{R16_05,              NULL}},//	d           ________________ddddd___________ 
 	{ 0xFFFF07FF,0x00000011,"MTHI"	 ,{R16_05,              NULL}},//	d           ________________ddddd___________ 
-	{ 0xFFFF07FF,0x00000012,"MHLO"	 ,{R16_05,              NULL}},//	d           ________________ddddd___________ 
+	{ 0xFFFF07FF,0x00000012,"MFLO"	 ,{R16_05,              NULL}},//	d           ________________ddddd___________ 
 	{ 0xFFFF07FF,0x00000013,"MTLO"	 ,{R16_05,              NULL}},//	d           ________________ddddd___________ 
 	{ 0xFC00FFFF,0x00000018,"MULT"	 ,{R06_05,R11_05,       NULL}},//	s,t         ______sssssttttt________________ 
 	{ 0xFC00FFFF,0x00000019,"MULTU"	 ,{R06_05,R11_05,       NULL}},//	s,t         ______sssssttttt________________ 
@@ -184,7 +184,7 @@ static STR_R3000ASM R3000Asm[] = {
 	{ 0xFC000000,0x0C000000,"JAL"	 ,{A06_26,			    NULL}},//	a           ______aaaaaaaaaaaaaaaaaaaaaaaaaa 
 	{ 0xFC000000,0x10000000,"BEQ"	 ,{R11_05,R06_05,O16_16,NULL}},//	t,s,o       ______ssssstttttoooooooooooooooo 
 	{ 0xFC000000,0x14000000,"BNE"	 ,{R11_05,R06_05,O16_16,NULL}},//	t,s,o       ______ssssstttttoooooooooooooooo 
-	{ 0xFC000000,0x20000000,"ADD"	 ,{R11_05,R06_05,I16_16,NULL}},// 	t,s,i       ______ssssstttttiiiiiiiiiiiiiiii 
+	{ 0xFC000000,0x20000000,"ADDI"	 ,{R11_05,R06_05,I16_16,NULL}},// 	t,s,i       ______ssssstttttiiiiiiiiiiiiiiii 
 	{ 0xFC000000,0x24000000,"ADDIU"	 ,{R11_05,R06_05,I16_16,NULL}},//	t,s,i       ______ssssstttttiiiiiiiiiiiiiiii 
 	{ 0xFC000000,0x28000000,"SLTI"	 ,{R11_05,R06_05,I16_16,NULL}},//	t,s,i       ______ssssstttttiiiiiiiiiiiiiiii 
 	{ 0xFC000000,0x2C000000,"SLTIU"	 ,{R11_05,R06_05,I16_16,NULL}},//	t,s,i       ______ssssstttttiiiiiiiiiiiiiiii 
@@ -489,7 +489,7 @@ O16_16(
 
 	//                  
 	//	00000000000000001111111111111111	// OffSet
-	lDat = lDat & 0xFFFF;
+	lDat = (SHORT)(lDat & 0xFFFF);
 	lDat = lAdr + 4 + ( ( (INT) lDat ) * 4);	// OffSet íléZèo
 
 	sprintf(pAsm,"%s%x",pAsm,lDat);
