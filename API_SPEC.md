@@ -1,7 +1,6 @@
 # DisR3000 API Specification
 
-Header: `src/DISR3000.H`
-DLL: `DisR3000.dll`
+Header: `src/DISR3000.H`\nDLL: `DisR3000.dll`
 Calling convention: `WINAPI`
 Return type: `LONG` (0 means success in current implementation)
 

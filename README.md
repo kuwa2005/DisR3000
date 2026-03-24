@@ -4,10 +4,11 @@ DisR3000 is a Windows DLL tool for disassembling R3000 machine code.
 
 ## Project Structure
 
-- `src/`: all C sources and headers
-- `docs/`: build guide and API specification
+- `src/`: all C sources and headers (and `Makefile`)
 - `sample/`: usage sample programs
 - `tests/`: local validation tools
+- `API_SPEC.md`: API specification
+- `BUILD_MSVC.md`: MSVC build guide
 
 ## Build (MSVC x64)
 
@@ -23,10 +24,12 @@ cd C:\00_Project\DisR3000
 cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars32.bat" && cl /nologo /LD /O2 /W4 /I.\src src\DisR3000.c src\DisR3000Main.c /link /OUT:DisR3000.dll kernel32.lib'
 ```
 
-## Documents
+## Build (GCC / Makefile in src)
 
-- `docs/API_SPEC.md`
-- `docs/BUILD_MSVC.md`
+```powershell
+cd C:\00_Project\DisR3000\src
+make
+```
 
 ## Sample
 
